@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocFlow · Editor</title>
+  <link rel="stylesheet" href="/vendor/quill/quill.snow.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="editor-page">
+  <header class="topbar">
+    <a class="brand" href="/dashboard" title="Back to documents"><span class="brand-mark">D</span></a>
+    <div class="title-wrap">
+      <input id="doc-title" class="title-input" maxlength="120" aria-label="Document title" disabled />
+      <div class="doc-subline">
+        <span id="role-badge" class="badge"></span>
+        <span id="owner-line" class="muted small"></span>
+        <span id="save-status" class="save-status" aria-live="polite"></span>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div id="presence" class="presence" aria-live="polite"></div>
+      <button id="history-btn" class="btn btn-ghost" type="button">History</button>
+      <div class="menu-wrap">
+        <button id="export-toggle" class="btn btn-ghost" type="button" aria-haspopup="menu" aria-expanded="false">Export ▾</button>
+        <div id="export-menu" class="menu" role="menu" hidden>
+          <a id="export-btn" role="menuitem" class="menu-item" href="#" download>Markdown (.md)</a>
+          <button id="export-pdf" role="menuitem" class="menu-item" type="button">PDF (print / save as PDF)</button>
+        </div>
+      </div>
+      <button id="share-btn" class="btn btn-primary" hidden>Share</button>
+      <div id="profile"></div>
+    </div>
+  </header>
+
+  <div id="conflict-banner" class="banner banner-warning" hidden role="alert">
+    <span>Someone else saved this document after you opened it, so your latest changes were <strong>not</strong> saved.</span>
+    <button id="conflict-reload" class="btn btn-small btn-secondary">Load latest version</button>
+  </div>
+  <div id="readonly-banner" class="banner banner-info" hidden>You have view-only access to this document.</div>
+
+  <main class="editor-shell">
+    <div id="loading" class="muted">Loading document…</div>
+    <div id="editor"></div>
+  </main>
+
+  <dialog id="share-dialog" class="dialog">
+    <form id="share-form" class="stack" novalidate>
+      <h2>Share document</h2>
+      <p class="muted small">Give another DocFlow user access by email. Sharing an existing collaborator again updates their role.</p>
+      <div class="share-row">
+        <input name="email" type="email" placeholder="name@example.com" required maxlength="254" aria-label="Email" />
+        <select name="role" aria-label="Role">
+          <option value="editor">Can edit</option>
+          <option value="viewer">View only</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Share</button>
+      </div>
+      <p class="form-error" id="share-error" role="alert"></p>
+      <p class="share-status" id="share-status" role="status"></p>
+      <h3>People with access</h3>
+      <ul id="share-list" class="share-list"></ul>
+
+      <h3>General access</h3>
+      <div class="general-access">
+        <div class="general-row">
+          <select id="link-scope" aria-label="General access">
+            <option value="restricted">Restricted</option>
+            <option value="link">Anyone with the link</option>
+          </select>
+          <select id="link-role" aria-label="Link access role" hidden>
+            <option value="viewer">View only</option>
+            <option value="editor">Can edit</option>
+          </select>
+        </div>
+        <p class="muted small" id="link-help">Only people added above can open this document.</p>
+      </div>
+
+      <div class="dialog-actions dialog-actions-split">
+        <button type="button" class="btn btn-secondary" id="copy-link">Copy link</button>
+        <button type="button" class="btn btn-primary" id="share-close">Done</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="history-dialog" class="dialog dialog-wide" aria-labelledby="history-title">
+    <div class="history-head">
+      <h2 id="history-title">Version history</h2>
+      <button type="button" class="btn btn-secondary" id="history-close">Close</button>
+    </div>
+    <div class="history-body">
+      <ul id="history-list" class="history-list" aria-label="Versions"></ul>
+      <section class="history-preview">
+        <div class="history-preview-bar">
+          <span id="history-label" class="muted small">Select a version to preview it.</span>
+          <button type="button" class="btn btn-primary btn-small" id="history-restore" hidden>Restore this version</button>
+        </div>
+        <div id="history-viewer"></div>
+      </section>
+    </div>
+  </dialog>
+
+  <script src="/vendor/quill/quill.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/editor.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocFlow · Sign in</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body class="auth-page">
+  <main class="auth-card">
+    <div class="brand"><span class="brand-mark">D</span> DocFlow</div>
+    <p class="muted">Lightweight collaborative documents.</p>
+
+    <form id="login-form" class="stack" novalidate>
+      <h1>Sign in</h1>
+      <p class="banner-inline" id="next-hint" hidden>Sign in to open the shared document.</p>
+      <label>Email <input name="email" type="email" autocomplete="username" required maxlength="254" /></label>
+      <label>Password <input name="password" type="password" autocomplete="current-password" required maxlength="128" /></label>
+      <p class="form-error" id="login-error" role="alert"></p>
+      <button type="submit" class="btn btn-primary">Sign in</button>
+      <p class="muted small">No account? <a href="#" id="show-register">Create one</a></p>
+    </form>
+
+    <form id="register-form" class="stack" hidden novalidate>
+      <h1>Create account</h1>
+      <label>Name <input name="name" type="text" autocomplete="name" required maxlength="80" /></label>
+      <label>Email
+        <input name="email" type="email" autocomplete="username" required maxlength="254" aria-describedby="email-hint" />
+        <span class="field-hint" id="email-hint"></span>
+      </label>
+      <label>Password
+        <input name="password" type="password" autocomplete="new-password" required maxlength="128" aria-describedby="pw-rules" />
+      </label>
+      <ul class="pw-rules" id="pw-rules" aria-live="polite">
+        <li data-rule="length">8 to 128 characters</li>
+        <li data-rule="letter">At least one letter</li>
+        <li data-rule="number">At least one number</li>
+        <li data-rule="special">At least one special character (e.g. ! @ # $)</li>
+        <li data-rule="nospace">No spaces</li>
+      </ul>
+      <label>Confirm password
+        <input name="confirmPassword" type="password" autocomplete="new-password" required maxlength="128" aria-describedby="confirm-hint" />
+        <span class="field-hint" id="confirm-hint"></span>
+      </label>
+      <p class="form-error" id="register-error" role="alert"></p>
+      <button type="submit" class="btn btn-primary">Create account</button>
+      <p class="muted small">Already have an account? <a href="#" id="show-login">Sign in</a></p>
+    </form>
+
+    <section class="demo-accounts" aria-label="Demo accounts">
+      <h2>Demo accounts</h2>
+      <p class="muted small">Password for all: <code>Password123!</code>. Click one to fill the form, then press Sign in.</p>
+      <div class="demo-list">
+        <button type="button" class="demo-btn" data-email="alice@demo.test"><strong>Alice</strong><span>owner of the welcome doc</span></button>
+        <button type="button" class="demo-btn" data-email="bob@demo.test"><strong>Bob</strong><span>can edit the welcome doc</span></button>
+        <button type="button" class="demo-btn" data-email="carol@demo.test"><strong>Carol</strong><span>view only on the welcome doc</span></button>
+      </div>
+    </section>
+  </main>
+  <script src="/js/api.js"></script>
+  <script src="/js/login.js"></script>
+</body>
+</html>

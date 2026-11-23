@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocFlow · Documents</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/dashboard"><span class="brand-mark">D</span> DocFlow</a>
+    <div class="topbar-right">
+      <button class="btn btn-ghost" id="logout">Sign out</button>
+      <div id="profile"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="actions-row">
+      <button class="btn btn-primary" id="new-doc">+ New document</button>
+      <label class="btn btn-secondary file-btn">
+        Import file
+        <input type="file" id="import-input" accept=".txt,.md,.markdown,.docx" />
+      </label>
+      <span class="muted small">Import supports <strong>.txt</strong>, <strong>.md</strong> and <strong>.docx</strong> (max 2 MB). Each file becomes a new editable document.</span>
+    </section>
+
+    <section class="doc-section">
+      <h2>My documents</h2>
+      <ul class="doc-list" id="owned-list" aria-live="polite"></ul>
+    </section>
+
+    <section class="doc-section">
+      <h2>Shared with me</h2>
+      <ul class="doc-list" id="shared-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
