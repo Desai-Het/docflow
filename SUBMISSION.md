@@ -2,9 +2,9 @@
 
 ## Links
 
-- **Live app:** `<<PASTE YOUR RENDER URL HERE>>`. The free tier sleeps when idle, so the first load can take about 50 seconds.
-- **Walkthrough video:** `<<PASTE YOUR VIDEO URL HERE>>` (also in `VIDEO_URL.txt`)
-- **Source repository (optional):** `<<PASTE GITHUB URL HERE>>`
+- **Live app:** `https://docflow-3qfe.onrender.com`. The free tier sleeps when idle, so the first load can take about 50 seconds.
+- **Walkthrough video:** `https://drive.google.com/file/d/12mtSV5b7gQ1Sf-Dx4aL-_2LgBtZv6dVG/view?usp=sharing` (also in `VIDEO_URL.txt`)
+- **Source repository (optional):** `https://github.com/Desai-Het/docflow`
 
 ## Test accounts (password for all: `Password123!`)
 

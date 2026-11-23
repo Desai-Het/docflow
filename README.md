@@ -2,7 +2,7 @@
 
 DocFlow is a small full-stack document editor inspired by Google Docs, built for the Ajaia AI-Native Full Stack Developer assignment.
 
-**Live app:** `<<PASTE YOUR RENDER URL HERE>>`. The free tier sleeps when idle, so the first load can take about 50 seconds.
+**Live app:** `https://docflow-3qfe.onrender.com`. The free tier sleeps when idle, so the first load can take about 50 seconds.
 
 ## Demo accounts
 
@@ -40,6 +40,7 @@ To test the no-access case, use any document that hasn't been shared (for exampl
 Requirements: **Node.js 22+** (current LTS). You don't need a database. Locally the app uses an embedded Postgres ([PGlite](https://pglite.dev)) that stores data in `./data`.
 
 ```bash
+cd docflow #(If not in this path, else skip to 'npm install').
 npm install
 npm start            # http://localhost:3000
 ```
